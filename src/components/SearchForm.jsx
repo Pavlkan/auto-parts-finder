@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { AUTO_BRANDS_API } from '../App';
+import { useDispatch } from 'react-redux';
 
 export const SearchForm = ({setAutoPartBrandsList}) => {
   const [autoPartArticle, setAutoPartArticle] = useState('');
+
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+    const trimmedAutoPartArticle = autoPartArticle.trim();
+
+    if (!trimmedAutoPartArticle) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => dispatch(fetchAutoPartBrands(trimmedAutoPartArticle)), 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [autoPartArticle, dispatch]);
 
   const handleFinderFormSubmit = (event) => {
     event.preventDefault();
