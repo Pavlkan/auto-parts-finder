@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import './App.css';
 
-import {SearchForm} from './components/SearchForm'
+import { SearchInput } from './components/SearchInput'
 
 export const AUTO_BRANDS_API = 'http://api.favorit-parts.ru/hs/hsprice/?key=00000000-0000-0000-0000-000000000001';
 
 
 function App() {
-  const [autoPartBrandsList, setAutoPartBrandsList] = useState([]);
+  const [autoPartBrandList, setAutoPartBrandList] = useState([]);
 
   const [chosenAutoPartBrand, setChosenAutoPartBrand] = useState('');
   
@@ -49,14 +49,14 @@ function App() {
 
   return (
     <div className='container d-flex flex-column gap-5'>
-      <SearchForm setAutoPartBrandsList={setAutoPartBrandsList}/>
+      <SearchInput setAutoPartBrandList={setAutoPartBrandList}/>
 
-      {autoPartBrandsList.length > 0 && (
+      {autoPartBrandList.length > 0 && (
         <div className="mt-5">
           <h2 className='text-primary'>Выберите производителя</h2>
 
           <div className='d-flex flex-wrap gap-3'>
-            {autoPartBrandsList.map((autoPartBrand, index) => (
+            {autoPartBrandList.map((autoPartBrand, index) => (
               <button 
                 key={index}
                 className='btn border'

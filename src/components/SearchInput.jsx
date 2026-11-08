@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { AUTO_BRANDS_API } from '../App';
 import { useDispatch } from 'react-redux';
 
-export const SearchForm = ({setAutoPartBrandsList}) => {
+export const SearchInput = ({setAutoPartBrandList}) => {
   const [autoPartArticle, setAutoPartArticle] = useState('');
 
   const dispatch = useDispatch(); 
@@ -27,8 +27,8 @@ export const SearchForm = ({setAutoPartBrandsList}) => {
       const fetchedResponse = await fetch(autoPartBrandsAPI);
       const response = await fetchedResponse.json();
       
-      const brands = response.goods.map((good) => good.brand); //maybe filter by count
-      setAutoPartBrandsList(brands);
+      const brands = response?.goods?.map((good) => good?.brand); //maybe filter by count
+      setAutoPartBrandList(brands);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Error';
       throw new Error(errorMessage);
