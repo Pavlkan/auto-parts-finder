@@ -20,12 +20,6 @@ export const SearchForm = ({setAutoPartBrandsList}) => {
     return () => clearTimeout(timeoutId);
   }, [autoPartArticle, dispatch]);
 
-  const handleFinderFormSubmit = (event) => {
-    event.preventDefault();
-
-    fetchAutoPartBrands();
-  }
-
   const fetchAutoPartBrands = async () => {
     const autoPartBrandsAPI = `${AUTO_BRANDS_API}&number=${autoPartArticle}`;
 
@@ -45,18 +39,14 @@ export const SearchForm = ({setAutoPartBrandsList}) => {
     <>
       <h1 className="text-primary">Введите артикул и найдите нужную деталь</h1>
 
-      <form className="d-flex gap-3" onSubmit={handleFinderFormSubmit}>
-        <input 
-          className="form-control col"
-          type="text" 
-          name='autoParts'
-          value={autoPartArticle}
-          onChange={(e) => setAutoPartArticle(e.target.value)}
-          required
-          />
-
-        <button className="btn btn-primary col-md-auto" type='submit'>Найти деталь</button>
-      </form>
+      <input 
+        className="form-control col"
+        type="text" 
+        name='auto-parts'
+        value={autoPartArticle}
+        onChange={(e) => setAutoPartArticle(e.target.value)}
+        required
+      />
     </>
   )
 } 
