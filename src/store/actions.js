@@ -1,4 +1,4 @@
-export const SET_ARTICLE = 'SET_NUMBER';
+export const SET_PART_NUMBER = 'SET_PART_NUMBER';
 export const SET_BRAND = 'SET_BRAND';
 
 export const BRANDS_REQUEST = 'BRANDS_REQUEST';
@@ -9,7 +9,7 @@ export const OFFERS_REQUEST = 'OFFERS_REQUEST';
 export const OFFERS_SUCCESS = 'OFFERS_SUCCESS';
 export const OFFERS_FAILURE = 'OFFERS_FAILURE';
 
-export const setArticle = (article) => ({ type: SET_ARTICLE, payload: article });
+export const setPartNumber = (partNumber) => ({ type: SET_PART_NUMBER, payload: partNumber });
 export const setBrand = (brand) => ({ type: SET_BRAND, payload: brand });
 
 export const brandsRequest = () => ({ type: BRANDS_REQUEST });

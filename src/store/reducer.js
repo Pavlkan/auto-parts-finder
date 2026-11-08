@@ -6,13 +6,13 @@ import {
   OFFERS_REQUEST,
   OFFERS_SUCCESS,
   SET_BRAND,
-  SET_ARTICLE,
+  SET_PART_NUMBER,
 } from './actions';
 
 const emptyRequest = { data: null, isLoading: false, error: null };
 
 const initialState = {
-  article: '',
+  partNumber: '',
   brand: null,
   brands: emptyRequest,
   offers: emptyRequest,
@@ -20,8 +20,8 @@ const initialState = {
 
 export const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_ARTICLE:
-      // A new number in article starts the search from scratch
+    case SET_PART_NUMBER:
+      // A new number in partNumber starts the search from scratch
       return { ...initialState, number: payload };
     case SET_BRAND:
       return { ...state, brand: payload };

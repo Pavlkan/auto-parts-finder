@@ -1,52 +1,69 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 
-import { AUTO_BRANDS_API } from '../App';
-import { useDispatch } from 'react-redux';
+const DEBOUNCE_MS = 500;
+const MIN_QUERY_LENGTH = 3;
 
-export const SearchInput = ({setAutoPartBrandList}) => {
-  const [autoPartArticle, setAutoPartArticle] = useState('');
+const toQuery = (value) => {
+  const query = value.trim();
 
-  const dispatch = useDispatch(); 
+  // return query.length >= MIN_QUERY_LENGTH ? query : '';
+  return query;
+}
 
-  useEffect(() => {
-    const trimmedAutoPartArticle = autoPartArticle.trim();
+export const SearchInput = ({ onSearch }) => {
+  const [autoPartNumber, setAutoPartNumber] = useState('');
+  const timerRef = useRef(null);
 
-    if (!trimmedAutoPartArticle) {
-      return;
-    }
+  // const dispatch = useDispatch(); 
 
-    const timeoutId = setTimeout(() => dispatch(fetchAutoPartBrands(trimmedAutoPartArticle)), 1000);
+  // const fetchAutoPartBrands = async () => {
+  //   const autoPartBrandsAPI = `${AUTO_BRANDS_API}&number=${autoPartArticle}`;
 
-    return () => clearTimeout(timeoutId);
-  }, [autoPartArticle, dispatch]);
-
-  const fetchAutoPartBrands = async () => {
-    const autoPartBrandsAPI = `${AUTO_BRANDS_API}&number=${autoPartArticle}`;
-
-    try {
-      const fetchedResponse = await fetch(autoPartBrandsAPI);
-      const response = await fetchedResponse.json();
+  //   try {
+  //     const fetchedResponse = await fetch(autoPartBrandsAPI);
+  //     const response = await fetchedResponse.json();
       
-      const brands = response?.goods?.map((good) => good?.brand); //maybe filter by count
-      setAutoPartBrandList(brands);
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Error';
-      throw new Error(errorMessage);
-    }
-  }
+  //     const brands = response?.goods?.map((good) => good?.brand); //maybe filter by count
+  //     setAutoPartBrandList(brands);
+  //   } catch (error) {
+  //     const errorMessage = error instanceof Error ? error.message : 'Error';
+  //     throw new Error(errorMessage);
+  //   }
+  // }
+
+  const handleChange = (event) => {
+    const nextValue = event.target.value;
+    setAutoPartNumber(nextValue);
+
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => onSearch(toQuery(nextValue)), DEBOUNCE_MS);
+  };
 
   return (
     <>
-      <h1 className="text-primary">Введите артикул и найдите нужную деталь</h1>
+      <label htmlFor="part-number" className="form-label">
+        Введите артикул детали
+      </label>
 
       <input 
-        className="form-control col"
-        type="text" 
-        name='auto-parts'
-        value={autoPartArticle}
-        onChange={(e) => setAutoPartArticle(e.target.value)}
-        required
+        id="part-number"
+        type="search" 
+        className="form-control form-control-lg"
+        placeholder="Например, 7160500039S"
+        autoComplete="off"
+        autoFocus
+        aria-describedby="part-number-hint"
+        value={autoPartNumber}
+        onChange={handleChange}
       />
+
+      <div id="part-number-hint" className="form-text">
+        {/* {isTooShort
+          ? `Введите не менее ${MIN_QUERY_LENGTH} символов`
+          : 'Поиск начнётся автоматически после ввода'} */}
+
+          Поиск начнётся автоматически после ввода
+      </div>
     </>
   )
 } 

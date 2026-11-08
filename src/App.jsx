@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import './App.css';
 
-import { SearchInput } from './components/SearchInput'
+import { SearchInput } from './components/SearchInput';
+import { usePartsSearch } from './hooks/usePartsSearch';
 
 export const AUTO_BRANDS_API = 'http://api.favorit-parts.ru/hs/hsprice/?key=00000000-0000-0000-0000-000000000001';
 
 
 function App() {
+  const { partNumber, brand, brands, offers, search, selectBrand, retryBrands, retryOffers } = usePartsSearch();
+
   const [autoPartBrandList, setAutoPartBrandList] = useState([]);
 
   const [chosenAutoPartBrand, setChosenAutoPartBrand] = useState('');
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <div className='container d-flex flex-column gap-5'>
-      <SearchInput setAutoPartBrandList={setAutoPartBrandList}/>
+      <SearchInput onSearch={search}/>
 
       {autoPartBrandList.length > 0 && (
         <div className="mt-5">
