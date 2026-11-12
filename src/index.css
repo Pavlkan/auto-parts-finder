@@ -1,13 +1,16 @@
 html {
   scrollbar-gutter: stable;
-  scrollbar-color: #4B91BD aliceblue;
+
+  @media (max-width: 1200px) {
+    scrollbar-color: #4B91BD aliceblue;
+  }
 }
 
 :root {
   --bs-primary: #172B3A;
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: black;
+  --bg: white;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -33,6 +36,10 @@ html {
 
   @media (max-width: 1024px) {
     font-size: 16px;
+  }
+  
+  @media (min-width: 1025px) {
+    --bg: black;
   }
 }
 
