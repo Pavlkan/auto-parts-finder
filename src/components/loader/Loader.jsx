@@ -15,7 +15,7 @@ export const Loader = ({ text }) => {
 export const ContentSkeleton = () => {
   return (
     <div className='placeholder-glow m-5 mt-0'>
-      <h2 className="placeholder h5 pb-3 rounded" style={{width: '30%', height: '5dvh'}}></h2>
+      <h2 className="placeholder pb-3 rounded" style={{width: '30%', height: '5dvh'}}></h2>
 
       <div className='placeholder rounded-top' style={{width: '100%', height: '10dvh'}}></div>
       <div className='placeholder border-top' style={{width: '100%', height: '10dvh'}}></div>

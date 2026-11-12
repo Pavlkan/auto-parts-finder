@@ -97,11 +97,11 @@ h1 {
   }
 }
 h2 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 118%;
   letter-spacing: -0.24px;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 

@@ -1,6 +1,6 @@
 export const BrandList = ({ brands, selectedBrand, onSelect }) => (
-  <section className="p-5 brand-list">
-    <h2 className="h5 pb-3">Выберите производителя</h2>
+  <section className="py-5 px-2 px-md-4 px-lg-5 brand-list">
+    <h2 className="pb-3">Выберите производителя</h2>
 
     <div className="list-group">
       {brands.map(({ id, brand, name }) => {

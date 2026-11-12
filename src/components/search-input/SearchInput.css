@@ -3,12 +3,11 @@
 }
 
 .search__input {
-    /* width: 30%; */
     width: 50%;
+}
 
-    /* transition: all 0.3s;
-
-    &:focus {
-        width: 50%;
-    } */
+@media (max-width: 768px) {
+    .search__input {
+        width: 100%;
+    }
 }

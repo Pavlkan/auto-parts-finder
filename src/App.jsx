@@ -39,15 +39,15 @@ function App() {
 
   return (
     <main className='d-flex flex-column'>
-      <section className="hero px-5 pt-5 text-left">
+      <section className="hero px-2 pt-2 px-md-4 pt-md-4 px-lg-5 pt-lg-5 text-left">
         <div className="hero__background" />
 
         <div className="hero__overlay" />
 
         <div className="hero__content d-flex flex-column gap-3 align-items-start">
-          <h1 style={{paddingBlockEnd: '25dvh'}}>Проценка</h1>
+          <h1 className='hero__content__title' style={{paddingBlockEnd: '25dvh'}}>Проценка</h1>
 
-          <h2 className='text-left' style={{maxWidth: '25dvw'}}>
+          <h2 className='hero__content__subtitle text-left'>
             Находите автозапчасти и аналоги всего в несколько кликов
           </h2>
 

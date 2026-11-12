@@ -22,8 +22,8 @@ const OfferRow = ({ offer: { brand, number, name, price, stock, isOriginal } }) 
 );
 
 export const OffersTable = ({ offers }) => (
-  <section className="p-5 pt-0">
-    <h2 className="h5 pb-3">
+  <section className="pb-5 px-2 px-md-4 px-lg-5">
+    <h2 className="pb-3">
       Аналоги и предложения <span className="badge text-bg-secondary">{offers.length}</span>
     </h2>
 
