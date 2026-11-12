@@ -1,0 +1,14 @@
+.search__container {
+    width: 100%;
+}
+
+.search__input {
+    /* width: 30%; */
+    width: 50%;
+
+    /* transition: all 0.3s;
+
+    &:focus {
+        width: 50%;
+    } */
+}

@@ -22,13 +22,13 @@ const OfferRow = ({ offer: { brand, number, name, price, stock, isOriginal } }) 
 );
 
 export const OffersTable = ({ offers }) => (
-  <section>
-    <h2 className="h5">
+  <section className="p-5 pt-0">
+    <h2 className="h5 pb-3">
       Аналоги и предложения <span className="badge text-bg-secondary">{offers.length}</span>
     </h2>
 
-    <div className="table-responsive">
-      <table className="table table-hover align-middle">
+    <div className="table-responsive border rounded">
+      <table className="table table-hover align-middle mb-0">
         <thead>
           <tr>
             <th>Производитель</th>
@@ -52,23 +52,3 @@ export const OffersTable = ({ offers }) => (
     </div>
   </section>
 );
-
-// export const OffersList = ({ offers }) => {
-//   const original
-
-//   return (
-//     <section className={isOriginal ? 'table-primary' : undefined}>
-//       <h2 className="h5">
-//         Аналоги и предложения <span className="badge text-bg-secondary">{offers.length}</span>
-//       </h2>
-
-//       {offers.map((offer) => (
-//         <OfferCard key={offer.id} offer={offer} />
-//       ))}
-//     </section>
-//   )
-// }
-
-// export const OfferCard = ({ offer: { brand, number, name, price, stock, isOriginal } }) => {
-
-// }

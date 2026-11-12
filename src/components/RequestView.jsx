@@ -1,16 +1,33 @@
-import { ErrorAlert } from './ErrorAlert';
-import { Loader } from './Loader';
+import { ErrorAlert } from './error-alert/ErrorAlert';
+import { Loader } from './loader/Loader';
 
-export const RequestView = ({ request, loadingText, emptyText, onRetry, children }) => {
+export const RequestView = ({ request, loadingText, emptyText, onRetry, children, contentRef }) => {
   const { data, isLoading, error } = request;
 
-  if (isLoading) return <Loader text={loadingText} />;
 
-  if (error) return <ErrorAlert message={error} onRetry={onRetry} />;
+  if (isLoading && data && !error) return (
+    <>
+      <Loader text={loadingText} />
+
+      {children}
+    </>
+  );
+
+  if (isLoading && data === null) return <Loader text={loadingText} />;
+
+  if (error) return (
+    <div ref={contentRef}>
+      <ErrorAlert message={error} onRetry={onRetry} />
+    </div>
+  );
 
   if (!data) return null;
   
-  if (data.length === 0) return <div className="alert alert-secondary">{emptyText}</div>;
+  if (data.length === 0) return <div ref={contentRef} className="alert alert-secondary">{emptyText}</div>;
 
-  return children;
+  return (
+    <div ref={contentRef}>
+      {children}
+    </div>
+  ); 
 };

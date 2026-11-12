@@ -27,14 +27,14 @@ export const reducer = (state = initialState, { type, payload }) => {
       return { ...state, brand: payload };
 
     case BRANDS_REQUEST:
-      return { ...state, brands: { ...emptyRequest, isLoading: true } };
+      return { ...state, brands: { ...state.brands, isLoading: true } };
     case BRANDS_SUCCESS:
       return { ...state, brands: { ...emptyRequest, data: payload } };
     case BRANDS_FAILURE:
       return { ...state, brands: { ...emptyRequest, error: payload } };
 
     case OFFERS_REQUEST:
-      return { ...state, offers: { ...emptyRequest, isLoading: true } };
+      return { ...state, offers: { ...state.offers, isLoading: true } };
     case OFFERS_SUCCESS:
       return { ...state, offers: { ...emptyRequest, data: payload } };
     case OFFERS_FAILURE:

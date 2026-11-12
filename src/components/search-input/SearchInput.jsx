@@ -1,12 +1,10 @@
 import { useRef, useState } from 'react';
+import './SearchInput.css';
 
 const DEBOUNCE_MS = 500;
-const MIN_QUERY_LENGTH = 3;
 
 const toQuery = (value) => {
   const query = value.trim();
-
-  // return query.length >= MIN_QUERY_LENGTH ? query : '';
   return query;
 }
 
@@ -23,11 +21,11 @@ export const SearchInput = ({ onSearch }) => {
   };
 
   return (
-    <div className="d-flex flex-column gap-1 align-items-start">
+    <div className="search__container d-flex flex-column gap-1 align-items-start">
       <input 
         id="part-number"
         type="search" 
-        className="form-control form-control-lg"
+        className="search__input form-control form-control-lg"
         placeholder="Введите артикул..."
         autoComplete="off"
         autoFocus
@@ -36,11 +34,7 @@ export const SearchInput = ({ onSearch }) => {
         onChange={handleChange}
       />
 
-      <div id="part-number-hint" className="form-text">
-        {/* {isTooShort
-          ? `Введите не менее ${MIN_QUERY_LENGTH} символов`
-          : 'Поиск начнётся автоматически после ввода'} */}
-
+      <div id="part-number-hint" className="form-text" style={{color: 'inherit'}}>
           Поиск начнётся автоматически после ввода
       </div>
     </div>
