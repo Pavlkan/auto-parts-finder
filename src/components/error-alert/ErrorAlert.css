@@ -1,0 +1,7 @@
+.alert {
+    margin-top: 3rem;
+}
+
+main:has(.brand-list) .alert {
+    margin-top: 0 !important;
+}
